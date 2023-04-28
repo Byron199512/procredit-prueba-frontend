@@ -49,7 +49,15 @@ El proyecto fue generado con la version 15.2.6.
     http://localhost:5289/api/seed
     ```
 # Probar la aplicacion
+  ```
+  Asesores de prueba:
+  user    : password
+  asesor1 : 123456
+  asesor2 : 123456
+  asesor3 : 123456
+  ```
 1. Abrir la url del proyecto http://localhost:4200/
+
 2. Probar insertar solicitud
     ```
     http://localhost:4200/home
