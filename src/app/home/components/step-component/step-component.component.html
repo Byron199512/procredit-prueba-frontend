@@ -1,0 +1,27 @@
+<mat-vertical-stepper [linear]="true" #stepper animationDuration="1500">
+
+  <mat-step [completed]="isValidCredit">
+    <ng-template matStepLabel>Escoge tu mejor opción</ng-template>
+    <app-form-type (onMyForm)="goNextCredit($event,stepper)"></app-form-type>
+  </mat-step>
+
+  <mat-step [completed]="isValidClient">
+    <ng-template matStepLabel>Llena tus datos personales</ng-template>
+    <app-form-credit (onMyForm)="goNextClient($event,stepper)"></app-form-credit>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Enviar mi solicitud</ng-template>
+    Al enviar la solicitud ud acepta la ayuda de nuestros asesores .
+    <div>
+      <button mat-button (click)="sendRequest()" color="primary">Enviar</button>
+      <button mat-button (click)="stepper.reset()">Cancelar</button>
+    </div>
+  </mat-step>
+
+  <div>
+
+    <!-- using totalStepsCount -->
+    <!-- <button (click)="goForward(stepper)" type="button" [disabled]="stepper.selectedIndex === totalStepsCount-1">Next</button> -->
+  </div>
+</mat-vertical-stepper>

@@ -1,0 +1,78 @@
+<form [formGroup]="myForm" (ngSubmit)="onSave()" style="width: 700px;" class=" flex flex-column" autocomplete="off">
+  <ng-template matStepLabel>Datos Personales</ng-template>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo de credito</mat-label>
+    <mat-select (selectionChange)="onRequiesType($event.value)" formControlName="requestTypeId">
+      <mat-option>Seleccione una opcion</mat-option>
+      <mat-option *ngFor="let item of types;" [value]="item.id">{{item.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <fieldset *ngIf="type" class="my-1 flex flex-column ">
+    <legend>Válido para:</legend>
+    <section class="flex align-items-center mb-1 ">
+      <label class="min">
+        Monto minimo:
+      </label>
+      <h3 class="m-0"> {{type.minAmount | currency}}</h3>
+    </section>
+    <section class="flex align-items-center  ">
+      <label class="max">
+        Monto Maximo:
+      </label>
+      <h3 class="m-0"> {{type.maxAmount | currency}}</h3>
+    </section>
+  </fieldset>
+  <section class="example-section">
+    <label class="example-margin">Descripcion (Motivo):</label>
+    <mat-radio-group formControlName="description" valu color="primary">
+      <mat-radio-button class="example-margin" [checked]="true" value="Autos Transporte">Autos Transporte</mat-radio-button>
+      <mat-radio-button class="example-margin" value="Vivienda Terrenos">Vivienda Terrenos</mat-radio-button>
+      <mat-radio-button class="example-margin" value="Inversion Empresas">Inversion Empresas</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+
+
+  <mat-form-field>
+    <mat-label>Monto:</mat-label>
+    <input matInput formControlName="amount" placeholder="1000" type="number">
+    <span *ngIf="isValidField('amount')" class="form-text text-danger">
+      {{ getFieldError('amount') }}
+    </span>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Desde</mat-label>
+    <input matInput (focus)="calculatePlazo()" (dateChange)="calculatePlazo()" formControlName="startDate" [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <span *ngIf="isValidField('startDate')" class="form-text text-danger">
+      {{ getFieldError('startDate') }}
+    </span>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hasta</mat-label>
+    <input matInput (focus)="calculatePlazo()" (dateChange)="calculatePlazo()" formControlName="endDate" [matDatepicker]="endDate">
+    <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>
+    <span *ngIf="isValidField('endDate')" class="form-text text-danger">
+      {{ getFieldError('endDate') }}
+    </span>
+  </mat-form-field>
+
+  <mat-form-field >
+    <mat-label>Plazo (meses):</mat-label>
+    <input readonly matInput formControlName="plazo" placeholder="1000" type="number">
+    <span *ngIf="isValidField('plazo')" class="form-text text-danger">
+      {{ getFieldError('plazo') }}
+    </span>
+  </mat-form-field>
+
+  <div>
+    <button mat-button>{{isValid ?'Continuar' : 'Guardar'}}</button>
+  </div>
+</form>

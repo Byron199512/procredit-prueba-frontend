@@ -1,0 +1,42 @@
+<div class="flex flex-column max-w-25rem shadow-2">
+  <span class="text-lg mb-4 p-2">Crear Nueva Cuenta</span>
+  <form [formGroup]="myResgiterForm" (ngSubmit)="onRegister()" class="flex flex-column p-2">
+    <mat-form-field>
+      <mat-label>Nombre:</mat-label>
+      <input type="text" formControlName="name" matInput placeholder="Procredit">
+      <span *ngIf="isValidField('name')" class="form-text text-danger">
+        {{ getFieldError('name') }}
+      </span>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apellido:</mat-label>
+      <input type="text" formControlName="lastName" matInput placeholder="Group">
+      <span *ngIf="isValidField('lastName')" class="form-text text-danger">
+        {{ getFieldError('lastName') }}
+      </span>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email:</mat-label>
+      <input type="email" formControlName="email" matInput placeholder="procredit@procredit.com">
+      <span *ngIf="isValidField('email')" class="form-text text-danger">
+        {{ getFieldError('email') }}
+      </span>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contraseña:</mat-label>
+      <input type="password" formControlName="password" matInput placeholder="123456">
+      <span *ngIf="isValidField('password')" class="form-text text-danger">
+        {{ getFieldError('password') }}
+      </span>
+    </mat-form-field>
+    <button mat-button mat-flat-button color="primary">
+      <mat-icon>login</mat-icon>
+        Crear
+    </button>
+  </form>
+
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/auth/login">Inicia Sesion</a>
+  </div>
+
+</div>

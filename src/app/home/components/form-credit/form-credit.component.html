@@ -1,0 +1,62 @@
+<form [formGroup]="myForm" (ngSubmit)="onSave()" class="max-w-25rem flex flex-column" autocomplete="off">
+  <ng-template matStepLabel>Datos Personales</ng-template>
+
+  <mat-form-field>
+    <mat-label>DNI</mat-label>
+    <input (blur)="searchClient()" matInput formControlName="id" placeholder="0985268775">
+    <span *ngIf="isValidField('id')" class="form-text text-danger">
+      {{ getFieldError('id') }}
+    </span>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="firstName" placeholder="Evans">
+    <span *ngIf="isValidField('firstName')" class="form-text text-danger">
+      {{ getFieldError('firstName') }}
+    </span>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Apellido</mat-label>
+    <input matInput formControlName="lastName" placeholder="Luna">
+    <span *ngIf="isValidField('lastName')" class="form-text text-danger">
+      {{ getFieldError('lastName') }}
+    </span>
+  </mat-form-field>
+
+
+
+  <section class="example-section">
+    <label class="example-margin">Tipo:</label>
+    <mat-radio-group formControlName="name" valu color="primary">
+      <mat-radio-button class="example-margin" [checked]="true" value="Ruc">Ruc</mat-radio-button>
+      <mat-radio-button class="example-margin" value="Pasaporte">Pasaporte</mat-radio-button>
+      <mat-radio-button class="example-margin" value="Cedula">Cédula</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de emisión</mat-label>
+    <input matInput formControlName="validFrom" [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <span *ngIf="isValidField('validFrom')" class="form-text text-danger">
+      {{ getFieldError('validFrom') }}
+    </span>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de emisión</mat-label>
+    <input matInput formControlName="validUntil" [matDatepicker]="validUntil">
+    <mat-datepicker-toggle matIconSuffix [for]="validUntil"></mat-datepicker-toggle>
+    <mat-datepicker #validUntil></mat-datepicker>
+    <span *ngIf="isValidField('validUntil')" class="form-text text-danger">
+      {{ getFieldError('validUntil') }}
+    </span>
+  </mat-form-field>
+
+  <div>
+    <button mat-button>{{isValid ?'Continuar' : 'Guardar'}}</button>
+  </div>
+</form>

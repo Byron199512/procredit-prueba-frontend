@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Solicitud de {{data.client.firstName}}</h1>
+
+
+
+<mat-dialog-content style="width: 50rem;">
+  <h3 class="font-bold m-0" >Datos del cliente: </h3>
+  <div class="md:flex  m-0">
+    <section class="px-2">
+      <label class="font-bold">Nombres Completos: </label>
+      <span>{{data.client.fullName}}</span>
+    </section>
+    <section>
+      <label class="font-bold">Identifación: </label>
+      <span>{{data.client.documentId}}</span>
+    </section>
+  </div>
+  <h3 class="font-bold m-0">Datos de la solicitud: </h3>
+  <div class="md:flex md:flex-column">
+    <div class="md:flex">
+      <section class="px-2">
+        <label class="font-bold">Id: </label>
+        <span>{{data.id}}</span>
+      </section>
+      <section class="px-2">
+        <label class="font-bold">Descripcion: </label>
+        <span>{{data.description}}</span>
+      </section>
+      <section class="px-2">
+        <label class="font-bold">Monto: </label>
+        <span>{{data.amount | currency}}</span>
+      </section>
+      <section class="px-2">
+        <label class="font-bold">Plazo: </label>
+        <span>{{data.plazo | MonthPipe}}</span>
+      </section>
+    </div>
+    <div class="md:flex">
+      <section class="px-2">
+        <label class="font-bold">Desde: </label>
+        <span>{{data.startDate | date}}</span>
+      </section>
+      <section class="px-2">
+        <label class="font-bold">Hasta: </label>
+        <span>{{data.endDate | date}}</span>
+      </section>
+    </div>
+  </div>
+
+  <h3 class="font-bold m-0">Tipo: </h3>
+  <div class="md:flex">
+    <section class="px-2">
+      <label class="font-bold">Tipo de crédito: </label>
+      <span>{{data.requestType.name}}</span>
+    </section>
+    <form [formGroup]="requestForm" class="md:flex" style="width: 20rem;">
+      <mat-label  class="font-bold">Estado: </mat-label>
+      <mat-select formControlName="statusId" >
+        <mat-option value="">Seleccione una opcion</mat-option>
+        <mat-option *ngFor="let item of types" [value]="item.id">{{item.description}}</mat-option>
+      </mat-select>
+    </form>
+  </div>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-flat-button color="primary" (click)="close()">Cerrar</button>
+  <button mat-button mat-flat-button color="primary" (click)="save()">Guardar</button>
+</mat-dialog-actions>

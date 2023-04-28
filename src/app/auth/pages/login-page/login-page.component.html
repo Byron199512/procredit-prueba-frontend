@@ -1,0 +1,22 @@
+<div class="flex flex-column max-w-25rem shadow-2">
+  <span class="text-lg mb-4 p-2">Iniciar Sesion</span>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="flex flex-column p-2">
+    <mat-form-field>
+      <mat-label>Usuario:</mat-label>
+      <input type="text" formControlName="UserName" matInput placeholder="Ingresa tu usuario">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contraseña:</mat-label>
+      <input type="password" formControlName="Password" matInput placeholder="Ingresa tu usuario">
+    </mat-form-field>
+    <button type="submit" mat-button mat-flat-button color="primary">
+      <mat-icon>login</mat-icon>
+        Ingresar
+    </button>
+  </form>
+
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/auth/register">Registrarse como asesor</a>
+  </div>
+
+</div>

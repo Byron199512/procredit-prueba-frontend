@@ -1,27 +1,66 @@
 # CreditosApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+El proyecto fue generado con la version 15.2.6.
+# __BACKEND__
+1. Descargar el proyecto de github
+2. Configurar las variables de entorno en el archivo  __appsettings.Development.json__
+    ```javascript
+     "Jwt": {
+    "Key": "palabraSecreta",
+    "Issuer": "https://localhost:4200",
+    "Audience": "https://localhost:4200" }
+    ```
+    ```javascript
+    "connectionStrings": {
+    "defaultConnection": "Conexion SQL SERVER"}
+    ```
+3. Crear Migracion de la base de datos
+    ```
+    Add-Migration nombre_migracion
+    ```
+4. Actualizar la base de datos
+    ```
+    Update-Database
+    ```
+5. Correr la aplicacion y probar la api
+# __FRONTEND__
+## Levantar el proyecto en modo desarrollo
 
-## Development server
+1. Descargar el proyecto de github
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. Instalar las dependencias del proyecto 
+    ``` 
+    npm i 
+    ```
+3. En el archivo ./enviroments/environment.ts  poner la url de la api ejm:
+      ```
+      http://localhost:5289/api
+      ``` 
+4. Correr el comando 
+    ``` 
+      ng serve -o
+    ```
+# Configurar datos del proyecto
+1. Insertar datos de prueba para probar la aplicacion
+    ```
+    http://localhost:5289/api/seed
+    ```
+# Probar la aplicacion
+1. Abrir la url del proyecto http://localhost:4200/
+2. Probar insertar solicitud
+    ```
+    http://localhost:4200/home
+    ```
+3. Crear asesor de prueba 
+    ```
+    http://localhost:4200/auth/register
+    ```
+4. Ingresar como asesor
+    ```
+    http://localhost:4200/auth/login
+    ```
+5. Listar solicitudes de cada asesor
+    ```
+    http://localhost:4200/advisor/list
+    ```
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

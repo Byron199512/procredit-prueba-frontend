@@ -1,0 +1,33 @@
+<div class="flex justify-content-center">
+
+  <div class="flex flex-column max-w-32rem shadow-2">
+    <span class="text-lg mb-4 p-2">Crear un tipo de prueba</span>
+    <form [formGroup]="myTypeForm" (ngSubmit)="onRegister()" class="flex flex-column p-2">
+      <mat-form-field>
+        <mat-label>Tipo de credito:</mat-label>
+        <input type="text" formControlName="name" matInput placeholder="Procredit">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Desde:</mat-label>
+        <input type="number" formControlName="minAmount" matInput placeholder="1000">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Hasta:</mat-label>
+        <input type="number" formControlName="maxAmount" matInput placeholder="5000">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nota:</mat-label>
+        <input type="text" formControlName="term" matInput placeholder="Para empresas grandes">
+      </mat-form-field>
+      <button mat-button mat-flat-button color="primary">
+        <mat-icon>login</mat-icon>
+        Crear
+      </button>
+    </form>
+
+    <div class="flex justify-content-end mt-5 p-1">
+      <a routerLink="/home">Al crear un nuevo tipo se solicitud podras verlo en el proceso de solicitud -></a>
+    </div>
+
+  </div>
+</div>
