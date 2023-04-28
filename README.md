@@ -3,6 +3,9 @@
 El proyecto fue generado con la version 15.2.6.
 # __BACKEND__
 1. Descargar el proyecto de github
+    ```
+    https://github.com/Byron199512/ws-credito   
+    ```
 2. Configurar las variables de entorno en el archivo  __appsettings.Development.json__
     ```javascript
      "Jwt": {
